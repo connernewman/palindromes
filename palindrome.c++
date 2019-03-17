@@ -37,34 +37,22 @@ bool char_star_palindrome_tr(char* start, char* end)
 	return char_star_palindrome_tr(start + 1, end - 1);
 }
 
-template <typename BI>
-bool _iterator_palindrome(BI& start, BI& end)
-{
-	if(*start != *end)
-		return false;
-	if(start == end || ++start == end)
-		return true;
-	return _iterator_palindrome(start, --end);
-}
-
-template <typename BI>
-bool iterator_palindrome(BI start, BI end)
-{
-	if(start == end)
-		return true;
-	return _iterator_palindrome(start, --end);
-}
-
 int main(int argc, char* argv[])
 {
 	if(argc < 2)
 	{
-		//std::cout << "Provide a string.\n";
-		std::vector<int> v = {1, 2, 3, 4, 5, 4, 3, 2, 1};
-		auto start = std::begin(v);
-		auto end = std::end(v);
-		bool b = iterator_palindrome(start, end);
-		std::cout << b << std::endl;
+		std::cout << "Provide a string:\n";
+		
+		std::string s;
+		bool b;
+		while(!std::cin.eof())
+		{
+			std::cin >> s;
+			auto sb = s.begin();
+			auto se = s.end();
+			b = iterator_palindrome(sb, se);
+			std::cout << s << " was " << (b ? "" : "not ") << "a palindrome.\n";
+		}
 	}
 
 	else
