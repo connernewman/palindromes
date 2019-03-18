@@ -45,13 +45,12 @@ int main(int argc, char* argv[])
 		
 		std::string s;
 		bool b;
-		while(!std::cin.eof())
+		while(std::getline(std::cin, s))
 		{
-			std::cin >> s;
 			auto sb = s.begin();
 			auto se = s.end();
 			b = iterator_palindrome(sb, se);
-			std::cout << s << " was " << (b ? "" : "not ") << "a palindrome.\n";
+			std::cout << (s.size() < 64 ? s : "String") << " was " << (b ? "" : "not ") << "a palindrome.\n";
 		}
 	}
 
